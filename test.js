@@ -6,8 +6,6 @@ var mocha = require('mocha')
 var describe = mocha.describe
 var it = mocha.it
 chai.use(chaiHttp);
-
-
 describe('User workflow tests', () => {
     it('should accept parameter', (done) => {
         let data = {
@@ -22,11 +20,7 @@ describe('User workflow tests', () => {
             .post('/track')
             .send(data)
             .end((err, res) => {
-                                
-                // Asserts
-                expect(res.status).to.be.equal(200); //normal expect with no custom output message
-                //expect(res.status,"Status is not 400 (NOT FOUND)").to.be.equal(400); //custom output message at fail
-                
+                expect(res.status).to.be.equal(200); 
                 expect(res.body).to.be.a('object');
                 expect(res.body.message).to.be.equal('success');
                 done();              
